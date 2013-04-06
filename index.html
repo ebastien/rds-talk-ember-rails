@@ -93,6 +93,7 @@
   <ul>
     <li>Emmanuel Bastien</li>
     <li>Riviera.rb</li>
+    <li>April 2, 2013</li>
   </ul>
 </div>
 </div>
@@ -226,7 +227,7 @@ end</code></pre>
 <pre class="sh_javascript"><code>App.ProductRoute = Auth.Route.extend({
   model: function(params) {
     if (Auth.get('authToken')) {
-      return App.Product.find(params.kpi_id);
+      return App.Product.find(params.product_id);
     }
     return {};
   }
