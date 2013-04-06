@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>A toolbox for Ember on Rails</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  
+    
+      <script type="text/javascript" src="./js/sh_lang/sh_ruby.min.js"></script>
+    
+      <script type="text/javascript" src="./js/sh_lang/sh_javascript.min.js"></script>
+    
+  
+
+  
+    <link rel="stylesheet" href="./file/default.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+    <tr><td class="key">P</td><td>toggle pause</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content title" ref="one/01_slide/1">
+<h1>A toolbox for<br/>Ember on Rails</h1>
+
+<div class="title_desc">
+  <ul>
+    <li>Emmanuel Bastien</li>
+    <li>Riviera.rb</li>
+  </ul>
+</div>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/2">
+<h2>Ember</h2>
+
+<ul>
+<li>Client-side MVC framework</li>
+<li>Sequel of SproutCore</li>
+<li>Plays nicely with Rails</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/3">
+<h2>Fundations</h2>
+
+<ul>
+<li><a href="https://github.com/rails-api/rails-api">rails-api</a></li>
+<li><a href="https://github.com/rails-api/active_model_serializers">active-model-serializer</a></li>
+<li><a href="https://github.com/emberjs/ember-rails">ember-rails</a></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/4">
+<h2>Rails API</h2>
+
+<p>Sensible defaults for API only applications:</p>
+
+<pre class="sh_ruby"><code>class ProductsController &lt; ApplicationController
+  def show
+    product = Product.find(params[:id])
+    if product
+      render :json =&gt; product
+    else
+      render :json =&gt; {}, :status =&gt; 404
+    end
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/5">
+<h2>Active Model Serializer</h2>
+
+<p>Flexible serialization of ActiveModel objects:</p>
+
+<pre class="sh_ruby"><code>class ProductSerializer &lt; ActiveModel::Serializer
+  attributes :id, :name, :price
+
+  def include_price?
+    current_user.admin?
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/6">
+<h2>The Rails asset pipeline</h2>
+
+<ul>
+<li>Compilation of Handlebars templates</li>
+<li>Handling of dependencies with Sprockets</li>
+<li>Sass and Compass for the stylesheets</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/7">
+<h2>Authentication</h2>
+
+<ul>
+<li><a href="https://github.com/plataformatec/devise">devise</a></li>
+<li><a href="https://github.com/heartsentwined/ember-auth-rails">ember-auth-rails</a></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/8">
+<h2>Devise for API</h2>
+
+<p>Draw your own routes:</p>
+
+<pre class="sh_ruby"><code>App::Application.routes.draw do
+  devise_for :users, :skip =&gt; [:sessions]
+  devise_scope :user do
+    post '/users/sign_in' =&gt; 'sessions#create'
+    delete '/users/sign_out' =&gt; 'sessions#destroy'
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/9">
+<p>Specialize the session controller:</p>
+
+<pre class="sh_ruby"><code>class SessionsController &lt; Devise::SessionsController
+  def create
+    resource = resource_from_credentials
+    data = {
+      user_id: resource.id,
+      auth_token: resource.authentication_token
+    }
+    render json: data, status: 201
+  end
+
+  def destroy
+    resource = resource_from_token
+    render json: {user_id: resource.id},
+           status: 200
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/10">
+<h2>Ember authentication</h2>
+
+<pre class="sh_javascript"><code>Auth.Config.reopen({
+  tokenCreateUrl: '/users/sign_in',
+  tokenDestroyUrl: '/users/sign_out',
+  tokenKey: 'auth_token',
+  idKey: 'user_id',
+  signInRoute: 'sign_in',
+  authRedirect: true,
+  signInRedirectFallbackRoute: 'index',
+  signOutRedirectFallbackRoute: 'index'
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/11">
+<h2>Authentication controllers</h2>
+
+<pre class="sh_javascript"><code>App.SignInController = Auth.SignInController.extend({
+  signIn: function () {
+    this.registerRedirect();
+    Auth.signIn({
+      email: this.get('email'),
+      password: this.get('password')
+    });
+  }
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/12">
+<h2>Authentication routes</h2>
+
+<pre class="sh_javascript"><code>App.ProductRoute = Auth.Route.extend({
+  model: function(params) {
+    if (Auth.get('authToken')) {
+      return App.Product.find(params.kpi_id);
+    }
+    return {};
+  }
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/13">
+<h2>Tests</h2>
+
+<ul>
+<li><a href="https://github.com/rspec/rspec">rspec</a>: Server-side tests </li>
+<li><a href="https://github.com/jfirebaugh/konacha">konacha</a>: Client-side integration tests</li>
+<li><a href="https://github.com/jnicklas/capybara">capybara</a>: Full-stack acceptance tests</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/14">
+<h2>RSpec with JsonPath</h2>
+
+<pre class="sh_ruby"><code>describe ProductsController do
+
+  describe "GET show" do
+
+    let!(:product) { Fabricate(:product) }
+
+    it "returns our product" do
+      get :show, id: product.id
+      m = JsonPath.on response.body, '$.product.name'
+      expect(m.first).to eq(product.name)
+    end
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/15">
+<h2>Konacha: Ember test setup</h2>
+
+<pre class="sh_javascript"><code>Ember.testing = true;
+
+Konacha.reset = function() {};
+
+App = null;
+Ember.run(function() {
+  App = Ember.Application.create();
+  App.deferReadiness();
+});
+
+App.Router.reopen({
+  location: 'none'
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/16">
+<h2>Konacha: Mocha, Chai and Sinon</h2>
+
+<pre class="sh_javascript"><code>describe("login form", function() {
+  before(function() {
+    Ember.run(function() {
+      Demo.advanceReadiness();
+    });
+  });
+
+  before(function() {
+    this.xhr = sinon.useFakeXMLHttpRequest();
+    var requests = this.requests = [];
+    this.xhr.onCreate = function (xhr) {
+      requests.push(xhr);
+    };
+  });</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/17">
+<pre class="sh_javascript"><code>  it("sends user credentials", function() {
+    Ember.run(function () {
+      Ember.View.views["signin-email"].set(
+        'value', "john@users");
+      Ember.View.views["signin-password"].set(
+        'value', "secret");
+    });
+    Ember.run(function () {
+      $("#signin-submit").click();
+    });
+    expect(this.requests[0].requestBody).to.equal(
+      '{"email":"john@users","password":"secret"}'
+    );
+  });
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/18">
+<h2>Capybara</h2>
+
+<pre class="sh_ruby"><code>feature "Signing up", :js =&gt; true do
+  given!(:user) { Fabricate(:user) }
+  scenario "Signing in with correct credentials" do
+    visit "/"
+    fill_in "signin-email", :with =&gt; user.email
+    fill_in "signin-password", :with =&gt; user.password
+    click_on "signin-submit"
+    page.should have_button("signout")
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/19">
+<h2>References</h2>
+
+<ul>
+<li><a href="http://www.slideshare.net/jo_liss/testing-ember-apps">Testing Ember Apps</a> by <a href="https://twitter.com/jo_liss">@jo_liss</a></li>
+<li><a href="https://speakerdeck.com/mikegrassotti/an-add-approach-to-testing-ember-dot-js">An ADD approach to testing ember.js</a> by <a href="https://twitter.com/mgrassotti">@mgrassotti</a></li>
+<li><a href="http://darthdeus.github.com/blog/2013/02/19/testing-ember-dot-js-part-1">Testing Ember.js - Part 1</a> by <a href="https://twitter.com/darthdeus">@darthdeus</a></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="one/01_slide/20">
+<h2>Gems</h2>
+
+<ul>
+<li><a href="https://github.com/rails-api/rails-api">rails-api</a></li>
+<li><a href="https://github.com/rails-api/active_model_serializers">active-model-serializer</a></li>
+<li><a href="https://github.com/emberjs/ember-rails">ember-rails</a></li>
+<li><a href="https://github.com/plataformatec/devise">devise</a></li>
+<li><a href="https://github.com/heartsentwined/ember-auth-rails">ember-auth-rails</a></li>
+<li><a href="https://github.com/jfirebaugh/konacha">konacha</a></li>
+<li><a href="https://github.com/jnicklas/capybara">capybara</a></li>
+</ul>
+</div>
+</div></div>
+<div id="pauseScreen">
+  
+</div>
+
+</body>
+</html>
